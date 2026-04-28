@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container">
         <div className="foot-grid">
           <div>
-            <Logo color="white" size="lg" />
+            <Logo color="white" size="xl" />
             <p style={{ color: 'rgba(255,255,255,0.7)', marginTop: 16, fontSize: 14, lineHeight: 1.6, maxWidth: 360 }}>
               Digitala system för stöd och omsorg. Byggda nära verksamheten,
               med data lagrad inom EU.

@@ -1,10 +1,10 @@
 interface LogoProps {
-  size?: 'md' | 'lg';
+  size?: 'md' | 'lg' | 'xl';
   color?: 'navy' | 'white';
 }
 
 export default function Logo({ size = 'md', color = 'navy' }: LogoProps) {
-  const h = size === 'lg' ? 38 : 22;
+  const h = size === 'xl' ? 60 : size === 'lg' ? 38 : 22;
   const filter = color === 'white' ? 'brightness(0) invert(1)' : 'none';
   return (
     <img

@@ -24,7 +24,7 @@ export default function HeroEditorial() {
                   <line x1="1" y1="7" x2="12" y2="7" /><polyline points="8 3 13 7 8 11" fill="none" />
                 </svg>
               </a>
-              <a className="btn he-ghost" href="#pilot">Vill du vara med som pilot?</a>
+              <a className="btn he-ghost" href="mailto:info@avivocare.com?subject=Pilotsamarbete">Vill du vara med som pilot?</a>
             </div>
           </div>
           <div className="he-product">
@@ -34,18 +34,16 @@ export default function HeroEditorial() {
 
         <div className="he-marquee">
           <div className="he-marquee-track">
-            <span>LSS</span><span className="he-bullet">•</span>
-            <span>OSL</span><span className="he-bullet">•</span>
-            <span>GDPR</span><span className="he-bullet">•</span>
-            <span>EU-DATA</span><span className="he-bullet">•</span>
-            <span>KOMMUNALT ÄGARSKAP</span><span className="he-bullet">•</span>
-            <span>BYGGT MED VERKSAMHETEN</span><span className="he-bullet">•</span>
-            <span>LSS</span><span className="he-bullet">•</span>
-            <span>OSL</span><span className="he-bullet">•</span>
-            <span>GDPR</span><span className="he-bullet">•</span>
-            <span>EU-DATA</span><span className="he-bullet">•</span>
-            <span>KOMMUNALT ÄGARSKAP</span><span className="he-bullet">•</span>
-            <span>BYGGT MED VERKSAMHETEN</span><span className="he-bullet">•</span>
+            <span>DELAKTIGHET</span><span className="he-bullet">•</span>
+            <span>REALTIDSÖVERSIKT</span><span className="he-bullet">•</span>
+            <span>ARBETSMILJÖ</span><span className="he-bullet">•</span>
+            <span>BYGGS MED VERKSAMHETEN</span><span className="he-bullet">•</span>
+            <span>DATA I EU</span><span className="he-bullet">•</span>
+            <span>DELAKTIGHET</span><span className="he-bullet">•</span>
+            <span>REALTIDSÖVERSIKT</span><span className="he-bullet">•</span>
+            <span>ARBETSMILJÖ</span><span className="he-bullet">•</span>
+            <span>BYGGS MED VERKSAMHETEN</span><span className="he-bullet">•</span>
+            <span>DATA I EU</span><span className="he-bullet">•</span>
           </div>
         </div>
       </div>

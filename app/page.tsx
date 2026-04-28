@@ -1,6 +1,5 @@
 import Nav from '@/components/Nav';
 import HeroEditorial from '@/components/HeroEditorial';
-import TrustStrip from '@/components/TrustStrip';
 import Challenges from '@/components/Challenges';
 import ProductSplit from '@/components/ProductSplit';
 import ValueSection from '@/components/ValueSection';
@@ -14,7 +13,6 @@ export default function Home() {
     <>
       <Nav variant="editorial" />
       <HeroEditorial />
-      <TrustStrip />
       <Challenges />
       <ProductSplit />
       <ValueSection />

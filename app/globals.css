@@ -713,7 +713,7 @@ img, svg { display: block; max-width: 100%; }
   text-wrap: balance;
 }
 .vs5-lede { font-size: 19px; line-height: 1.55; color: var(--muted); margin: 0 auto; max-width: 50ch; }
-.vs5-diagram { position: relative; max-width: 1200px; margin: 0 auto; padding-bottom: clamp(220px, 26vw, 320px); }
+.vs5-diagram { position: relative; max-width: 1200px; margin: 0 auto; padding-bottom: clamp(380px, 40vw, 500px); }
 .vs5-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(40px,6vw,96px); position: relative; z-index: 3; }
 @media (max-width: 800px) { .vs5-cols { grid-template-columns: 1fr; gap: 56px; } }
 .vs5-col { display: flex; flex-direction: column; gap: 20px; text-align: center; }
@@ -734,7 +734,7 @@ img, svg { display: block; max-width: 100%; }
 .vs5-flow {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: clamp(180px, 22vw, 260px);
+  height: clamp(300px, 32vw, 420px);
   pointer-events: none;
   z-index: 1;
 }
@@ -795,7 +795,7 @@ img, svg { display: block; max-width: 100%; }
 .vs5-data-pill:nth-child(4) { top: 26%; left: 50%; transform: translateX(-50%); }
 .vs5-data-pill:nth-child(5) { top: 6%; right: 12%; }
 .vs5-data-pill:nth-child(6) { top: 26%; right: 12%; }
-.vs5-anchor-wrap { position: absolute; left: 50%; bottom: -40px; transform: translate(-50%,0); z-index: 2; }
+.vs5-anchor-wrap { position: absolute; left: 50%; bottom: -80px; transform: translate(-50%,0); z-index: 2; }
 .vs5-anchor { position: relative; width: 280px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
 @media (max-width: 800px) {
   .vs5-anchor-wrap { position: relative; transform: none; left: auto; bottom: auto; margin: 56px auto 0; display: flex; justify-content: center; }

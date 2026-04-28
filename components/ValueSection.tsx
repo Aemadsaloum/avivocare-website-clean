@@ -157,7 +157,7 @@ export default function ValueSection() {
             <div className="vs5-anchor" data-vs5-reveal style={{ '--d': '320ms' } as React.CSSProperties}>
               <div style={{ position: 'relative', width: '100%' }}>
                 <DesktopMock theme="light" />
-                <div style={{ position: 'absolute', top: -28, right: -18, width: 78, pointerEvents: 'none' }}>
+                <div style={{ position: 'absolute', top: -45, right: -30, width: 120, pointerEvents: 'none' }}>
                   <PhoneMock />
                 </div>
               </div>

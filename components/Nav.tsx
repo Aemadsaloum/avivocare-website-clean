@@ -15,7 +15,11 @@ export default function Nav({ variant = 'editorial' }: NavProps) {
 
   return (
     <nav className="nav" style={navStyle}>
-      <Logo size="lg" color={onDark ? 'white' : 'navy'} />
+      <div style={{ position: 'relative', width: 200, height: 24, flexShrink: 0 }}>
+        <div style={{ position: 'absolute', top: '50%', left: 0, transform: 'translateY(-50%)' }}>
+          <Logo size="lg" color={onDark ? 'white' : 'navy'} />
+        </div>
+      </div>
       <div className="nav-links">
         <a className="nav-link" style={{ color: linkColor }} href="#produkt">Produkt</a>
         <a className="nav-link" style={{ color: linkColor }} href="#fordelar">Fördelar</a>

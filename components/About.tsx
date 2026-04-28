@@ -33,8 +33,34 @@ export default function About() {
             </div>
           </div>
           <div className="ab-photo-wrap" style={{ width: '100%' }}>
-            <div className="ab-photo" style={{ width: '100%', aspectRatio: '4 / 3', minHeight: 360 }}>
-              <Logo size="xl" />
+            <div
+              className="ab-photo"
+              style={{
+                width: '100%',
+                aspectRatio: '4 / 3',
+                minHeight: 360,
+                position: 'relative',
+                overflow: 'hidden',
+                background: 'transparent',
+                border: 'none',
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/about-photo.jpg"
+                alt="Personal och brukare i samtal"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
+              />
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <Logo size="xl" />
+              </div>
             </div>
           </div>
         </div>

@@ -122,7 +122,7 @@ export default function ValueSection() {
                 </linearGradient>
               </defs>
               <path d="M 200 0 L 200 140 Q 200 200 350 230 L 540 260" stroke="url(#vs5-grad)" strokeWidth="1.5" fill="none" />
-              <path d="M 600 0 L 600 260" stroke="url(#vs5-grad)" strokeWidth="1.5" fill="none" />
+              <path d="M 600 0 L 600 260" stroke="rgba(31,42,74,0.28)" strokeWidth="1.5" fill="none" />
               <path d="M 1000 0 L 1000 140 Q 1000 200 850 230 L 660 260" stroke="url(#vs5-grad)" strokeWidth="1.5" fill="none" />
               {flowing && (
                 <>

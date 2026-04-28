@@ -926,3 +926,205 @@ img, svg { display: block; max-width: 100%; }
 }
 @media (max-width: 720px) { .cta-card { grid-template-columns: 1fr; padding: 32px; } }
 .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ========================================================================
+   Responsive — Tablet & Mobile
+   Desktop layout above 1024px is left untouched.
+   ======================================================================== */
+
+/* Prevent horizontal overflow globally */
+html { overflow-x: hidden; }
+body { overflow-x: hidden; max-width: 100vw; }
+img, svg { max-width: 100%; height: auto; }
+
+/* ─── Tablet (≤ 1024px) — moderate scaling ─── */
+@media (max-width: 1024px) {
+  .section { padding: 96px 0; }
+  .hero-editorial::before { font-size: 280px; }
+  .ch-bg-num { font-size: 360px; left: -60px; }
+  .ps-bg-num { font-size: 320px; right: -40px; }
+  .vs5-headline { font-size: clamp(48px, 9vw, 100px); }
+  .foot-grid { gap: 36px; }
+}
+
+/* ─── Tablet portrait / large mobile (≤ 768px) ─── */
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  .section-tight { padding: 56px 0; }
+
+  /* Nav: hide secondary links, keep logo + Boka demo */
+  .nav-links { display: none; }
+  .nav-login { display: none; }
+  .nav { padding: 8px 12px 8px 18px; }
+
+  /* Hero */
+  .hero-editorial { padding: 56px 0 80px; }
+  .hero-editorial::before { font-size: 200px; right: -16px; top: 30px; }
+  .he-grid { padding-top: 32px; gap: 32px; }
+  .he-headline { margin: 16px 0 20px; }
+  .he-lede { margin-bottom: 24px; font-size: 17px; }
+  .he-marquee { margin-top: 40px; padding-top: 22px; }
+  .he-marquee-track { font-size: 12px; gap: 22px; }
+
+  /* Challenges */
+  .ch-bg-num { font-size: 240px; left: -50px; top: 30px; }
+  .ch-head { margin-bottom: 56px; }
+  .ch-headline { font-size: clamp(28px, 6.2vw, 44px); }
+  .ch-row { padding: 36px 0; gap: 24px; }
+  .ch-num { font-size: 44px; }
+  .ch-row-title { font-size: clamp(22px, 4.8vw, 28px); }
+  .ch-consequence { padding: 36px 28px; }
+  .ch-cons-text { padding-left: 28px; }
+  .ch-cons-attr { padding-left: 28px; }
+  .ch-cons-quote-mark { font-size: 90px; left: 18px; }
+
+  /* ProductSplit */
+  .ps-bg-num { font-size: 240px; right: -30px; }
+  .ps-head { margin-bottom: 56px; }
+  .ps-divider { margin: 56px 0; }
+  .ps-row-head { margin-bottom: 36px; }
+
+  /* ValueSection */
+  .vs5-section { padding-top: 72px; padding-bottom: 72px; }
+  .vs5-head { margin-bottom: 56px; }
+  .vs5-headline { font-size: clamp(44px, 11vw, 80px); margin-bottom: 24px; }
+  .vs5-eyebrow-row { margin-bottom: 22px; }
+  .vs5-diagram { padding-bottom: 0; }
+  .vs5-cols { gap: 36px; }
+  .vs5-col-headline { font-size: clamp(26px, 5.8vw, 36px); }
+
+  /* Manifest */
+  .mf-grid { gap: 36px; }
+  .mf-pillar { padding: 20px 0; }
+
+  /* About — keep stacked layout, photo a bit shorter */
+  .ab-grid { gap: 28px; }
+  .ab-photo { min-height: 320px !important; }
+
+  /* CTA */
+  .cta-card { padding: 36px 28px; }
+
+  /* Footer */
+  .foot { padding: 56px 0 32px; }
+
+  /* Tap targets */
+  .btn { min-height: 44px; }
+  .nav-demo { min-height: 44px; display: inline-flex; align-items: center; }
+}
+
+/* ─── Mobile (≤ 480px) ─── */
+@media (max-width: 480px) {
+  .container { padding: 0 18px; }
+  .section { padding: 56px 0; }
+  .section-tight { padding: 40px 0; }
+
+  /* Nav — compact, logo scaled down via slot */
+  .nav {
+    top: 8px;
+    margin: 8px 12px 0;
+    max-width: calc(100% - 24px);
+    padding: 6px 12px 6px 16px;
+  }
+  .nav-logo-slot { width: 120px !important; height: 28px !important; }
+  .nav .nav-logo-slot img { height: 56px !important; }
+  .nav-demo {
+    padding: 12px 16px;
+    font-size: 13px;
+    min-height: 44px;
+  }
+
+  /* Hero */
+  .hero-editorial { padding: 32px 0 56px; }
+  .hero-editorial::before { font-size: 140px; right: -10px; top: 20px; opacity: 0.25; }
+  .he-grid { gap: 28px; padding-top: 24px; }
+  .he-lede { font-size: 16px; margin-bottom: 22px; }
+  .he-actions { flex-direction: column; gap: 10px; align-items: stretch; }
+  .he-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+  .he-marquee { margin-top: 32px; padding-top: 18px; }
+  .he-marquee-track { font-size: 11px; gap: 18px; }
+
+  /* Challenges */
+  .ch-bg-num { font-size: 160px; left: -30px; }
+  .ch-head { margin-bottom: 40px; }
+  .ch-headline { font-size: clamp(26px, 7.4vw, 36px); }
+  .ch-lede { font-size: 16px; }
+  .ch-row { padding: 28px 0; gap: 20px; }
+  .ch-num { font-size: 36px; }
+  .ch-row-title { font-size: clamp(20px, 5.4vw, 24px); margin-bottom: 12px; }
+  .ch-row-body { font-size: 15px; }
+  .ch-stat-num { font-size: 44px; }
+  .ch-consequence { padding: 28px 20px; }
+  .ch-cons-text { font-size: 18px; padding-left: 22px; }
+  .ch-cons-attr { padding-left: 22px; font-size: 11px; }
+  .ch-cons-quote-mark { font-size: 70px; left: 14px; top: 8px; }
+
+  /* ProductSplit */
+  .ps-bg-num { font-size: 180px; right: -10px; opacity: 0.025; }
+  .ps-head { margin-bottom: 40px; }
+  .ps-row-title { font-size: clamp(22px, 6.2vw, 32px); }
+  .ps-row-sub { font-size: 15px; }
+  .ps-divider { margin: 40px 0; }
+  .ps-bullets li { padding: 18px 0; gap: 14px; grid-template-columns: 36px 1fr; }
+  .ps-bullets h4 { font-size: 16px; }
+  .ps-bullets p { font-size: 14px; }
+
+  /* ValueSection */
+  .vs5-section { padding-top: 56px; padding-bottom: 56px; }
+  .vs5-head { margin-bottom: 40px; }
+  .vs5-headline { font-size: clamp(36px, 13vw, 60px); margin-bottom: 20px; }
+  .vs5-eyebrow-row { margin-bottom: 18px; }
+  .vs5-cols { gap: 32px; }
+  .vs5-col-headline { font-size: clamp(24px, 6.5vw, 32px); }
+  .vs5-col-body { font-size: 14px; }
+  /* Scale combined mocks down to fit narrow viewport without clipping */
+  .vs5-mocks {
+    transform: scale(0.7);
+    transform-origin: top center;
+    margin-bottom: -60px;
+  }
+  .vs5-foot { font-size: 18px; margin-top: 48px; }
+  .vs5-anchor-word { font-size: 22px; }
+
+  /* Manifest */
+  .mf-grid { gap: 28px; }
+  .mf-pillar { padding: 16px 0; grid-template-columns: 36px 1fr; gap: 12px; }
+  .mf-pillar-title { font-size: 17px; }
+  .mf-pillar-body { font-size: 14px; }
+
+  /* About */
+  .ab-grid { gap: 24px; }
+  .ab-photo {
+    min-height: 280px !important;
+    padding-top: 22px !important;
+  }
+  .ab-body p { font-size: 15px; }
+
+  /* CTA */
+  .cta-card { padding: 28px 20px; gap: 24px; }
+  .cta-actions { flex-direction: column; align-items: stretch; }
+  .cta-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+
+  /* Footer */
+  .foot { padding: 48px 0 24px; }
+  .foot-grid { grid-template-columns: 1fr; gap: 24px; padding-bottom: 32px; }
+  .foot-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+}
+
+/* ─── Very narrow (≤ 360px) ─── */
+@media (max-width: 360px) {
+  .container { padding: 0 14px; }
+  .nav { padding: 4px 10px 4px 14px; }
+  .nav-logo-slot { width: 100px !important; height: 24px !important; }
+  .nav .nav-logo-slot img { height: 48px !important; }
+  .nav-demo { padding: 10px 14px; font-size: 12px; }
+  .hero-editorial::before { font-size: 110px; }
+  .vs5-mocks { transform: scale(0.6); margin-bottom: -90px; }
+}

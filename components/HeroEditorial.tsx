@@ -6,7 +6,7 @@ export default function HeroEditorial() {
       <div className="container">
         <div className="he-grid">
           <div className="he-copy">
-            <span className="eyebrow on-dark">VI BYGGER NÄSTA GENERATIONS LSS-STÖD</span>
+            <span className="eyebrow on-dark">VI BYGGER NÄSTA GENERATIONS DIGITALA VERKTYG</span>
             <h1 className="he-headline">
               <span className="he-italic">Rutina</span> samlar<br />
               det dagliga arbetet<br />

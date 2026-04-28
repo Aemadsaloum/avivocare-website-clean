@@ -1,7 +1,32 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import React from 'react';
+
+const slides: { headline: React.ReactNode; lede: React.ReactNode }[] = [
+  {
+    headline: (
+      <>
+        Omsorgen är byggd för<br />
+        <span className="accent-italic">människor</span>. Verktygen är inte det.
+      </>
+    ),
+    lede: (
+      <>
+        Tre strukturella problem skapar onödig stress för personal, otydlighet
+        för brukaren och osynlighet för ledningen.
+      </>
+    ),
+  },
+  {
+    headline: <>Brukarens röst kan inte vara något som &ldquo;läggs till&rdquo;.</>,
+    lede: <>Den måste finnas i systemet — annars försvinner den i vardagen.</>,
+  },
+  {
+    headline: <>Arbetsmiljö avgörs inte i policys.</>,
+    lede: <>Den avgörs i mötet mellan behov och bemanning — varje dag.</>,
+  },
+];
 
 const items = [
   {
@@ -32,6 +57,8 @@ const items = [
 
 export default function Challenges() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [slideIdx, setSlideIdx] = useState(0);
+  const [slideVisible, setSlideVisible] = useState(true);
 
   useEffect(() => {
     const root = sectionRef.current;
@@ -52,6 +79,22 @@ export default function Challenges() {
     return () => io.disconnect();
   }, []);
 
+  // Auto-rotate the headline/intro slide every 5s with a soft fade
+  useEffect(() => {
+    let fadeTimeout: ReturnType<typeof setTimeout> | undefined;
+    const interval = setInterval(() => {
+      setSlideVisible(false);
+      fadeTimeout = setTimeout(() => {
+        setSlideIdx((i) => (i + 1) % slides.length);
+        setSlideVisible(true);
+      }, 360);
+    }, 5000);
+    return () => {
+      clearInterval(interval);
+      if (fadeTimeout) clearTimeout(fadeTimeout);
+    };
+  }, []);
+
   return (
     <section className="section ch-section" id="utmaningar" ref={sectionRef}>
       <div className="ch-bg-num" aria-hidden="true">01</div>
@@ -62,14 +105,18 @@ export default function Challenges() {
             <span className="ch-eyebrow-line" />
             <span>UTMANINGEN</span>
           </div>
-          <h2 className="ch-headline">
-            Omsorgen är byggd för<br />
-            <span className="accent-italic">människor</span>. Verktygen är inte det.
-          </h2>
-          <p className="ch-lede">
-            Tre strukturella problem skapar onödig stress för personal, otydlighet
-            för brukaren och osynlighet för ledningen.
-          </p>
+          <div className={`ch-slide${slideVisible ? '' : ' ch-slide--hidden'}`}>
+            <h2 className="ch-headline">{slides[slideIdx].headline}</h2>
+            <p className="ch-lede">{slides[slideIdx].lede}</p>
+          </div>
+          <div className="ch-slide-dots" aria-hidden="true">
+            {slides.map((_, i) => (
+              <span
+                key={i}
+                className={`ch-slide-dot${i === slideIdx ? ' is-active' : ''}`}
+              />
+            ))}
+          </div>
         </header>
 
         <div className="ch-list">
@@ -171,6 +218,38 @@ export default function Challenges() {
         }
         .ch-row.ch-row-fx .ch-stat-source {
           margin-top: 0;
+        }
+
+        /* Headline/intro slide rotator — soft fade */
+        .ch-slide {
+          transition: opacity 360ms ease, transform 360ms ease;
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .ch-slide.ch-slide--hidden {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .ch-slide { transition: opacity 200ms ease; transform: none; }
+          .ch-slide.ch-slide--hidden { transform: none; }
+        }
+        .ch-slide-dots {
+          display: flex;
+          gap: 8px;
+          justify-content: center;
+          margin-top: 28px;
+        }
+        .ch-slide-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: rgba(31,42,68,0.18);
+          transition: background 360ms ease, transform 360ms ease;
+        }
+        .ch-slide-dot.is-active {
+          background: var(--coral);
+          transform: scale(1.2);
         }
       `}</style>
     </section>

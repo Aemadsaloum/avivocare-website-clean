@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import React from 'react';
 
 const slides: { headline: React.ReactNode; lede: React.ReactNode }[] = [
@@ -67,8 +67,7 @@ export default function Challenges() {
   const sectionRef = useRef<HTMLElement>(null);
   const [slideIdx, setSlideIdx] = useState(0);
   const [slideVisible, setSlideVisible] = useState(true);
-  // tick is bumped on manual navigation to restart the auto-rotate interval
-  const [tick, setTick] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -90,33 +89,46 @@ export default function Challenges() {
     return () => io.disconnect();
   }, []);
 
-  // Auto-rotate the headline/intro slide every 5s with a soft fade.
-  // Restarts whenever `tick` changes (i.e. after a manual dot click).
-  useEffect(() => {
-    const interval = setInterval(() => {
+  // (Re)start the auto-rotate interval. Safe to call repeatedly — clears any prior interval first.
+  const startAutoRotate = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
       setSlideVisible(false);
       fadeTimeoutRef.current = setTimeout(() => {
         setSlideIdx((i) => (i + 1) % slides.length);
         setSlideVisible(true);
       }, 360);
     }, 5000);
+  }, []);
+
+  // Mount: start auto-rotate. Unmount: clear both interval and pending fade.
+  useEffect(() => {
+    startAutoRotate();
     return () => {
-      clearInterval(interval);
+      if (intervalRef.current) clearInterval(intervalRef.current);
       if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
     };
-  }, [tick]);
+  }, [startAutoRotate]);
 
   const goToSlide = (i: number) => {
+    // Reject anything outside [0, slides.length); also no-op if already on this slide.
+    if (!Number.isInteger(i) || i < 0 || i >= slides.length) return;
     if (i === slideIdx) return;
+    // Cancel any pending fade-in from auto-rotate or previous click
     if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
     setSlideVisible(false);
     fadeTimeoutRef.current = setTimeout(() => {
       setSlideIdx(i);
       setSlideVisible(true);
     }, 360);
-    // restart the auto-rotate timer so the user gets a full 5s before next auto-advance
-    setTick((t) => t + 1);
+    // Restart the 5s timer so the user has a full read window before next auto-advance.
+    // (Does NOT cancel the manual fade timeout above — different ref.)
+    startAutoRotate();
   };
+
+  // Defensive: ensure we never render undefined if slideIdx ever drifts out of range.
+  const currentSlide = slides[slideIdx] ?? slides[0];
 
   return (
     <section className="section ch-section" id="utmaningar" ref={sectionRef}>
@@ -129,8 +141,8 @@ export default function Challenges() {
             <span>UTMANINGEN</span>
           </div>
           <div className={`ch-slide${slideVisible ? '' : ' ch-slide--hidden'}`}>
-            <h2 className="ch-headline">{slides[slideIdx].headline}</h2>
-            <p className="ch-lede">{slides[slideIdx].lede}</p>
+            <h2 className="ch-headline">{currentSlide.headline}</h2>
+            <p className="ch-lede">{currentSlide.lede}</p>
           </div>
           <div className="ch-slide-dots" role="tablist" aria-label="Utmaningen — bildspel">
             {slides.map((_, i) => (

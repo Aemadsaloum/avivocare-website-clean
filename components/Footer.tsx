@@ -17,14 +17,10 @@ export default function Footer() {
             <a href="#">Rutina Admin</a>
             <a href="#">Rutina App</a>
             <a href="#">Säkerhet</a>
-            <a href="#">Upphandling</a>
           </div>
           <div className="foot-col">
             <h5>Bolaget</h5>
             <a href="#">Om oss</a>
-            <a href="#">Manifestet</a>
-            <a href="#">Karriär</a>
-            <a href="#">Press</a>
           </div>
           <div className="foot-col">
             <h5>Kontakt</h5>
@@ -34,11 +30,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="foot-bottom">
-          <span>© 2026 AvivoCare AB · Org. 559xxx-xxxx · Stockholm, Sverige</span>
-          <span style={{ display: 'flex', gap: 24 }}>
-            <a href="#" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Integritet</a>
-            <a href="#" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>Cookies</a>
-          </span>
+          <span>AVIVO AB · Org. 559538-5260</span>
         </div>
       </div>
     </footer>

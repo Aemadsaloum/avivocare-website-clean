@@ -19,7 +19,6 @@ export default function Nav({ variant = 'editorial' }: NavProps) {
       <div className="nav-links">
         <a className="nav-link" style={{ color: linkColor }} href="#produkt">Produkt</a>
         <a className="nav-link" style={{ color: linkColor }} href="#fordelar">Fördelar</a>
-        <a className="nav-link" style={{ color: linkColor }} href="#kommuner">Kommuner</a>
         <a className="nav-link" style={{ color: linkColor }} href="#om">Om oss</a>
         <a className="nav-link" style={{ color: linkColor }} href="#kontakt">Kontakt</a>
       </div>

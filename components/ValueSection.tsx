@@ -156,11 +156,15 @@ export default function ValueSection() {
           <div className="vs5-anchor-wrap">
             <div className="vs5-anchor" data-vs5-reveal style={{ '--d': '320ms' } as React.CSSProperties}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                <div style={{ position: 'relative', width: 180, zIndex: 1 }}>
-                  <DesktopMock theme="light" />
+                <div style={{ width: 234, height: 180, position: 'relative', zIndex: 1, overflow: 'visible' }}>
+                  <div style={{ width: 520, transformOrigin: 'top left', transform: 'scale(0.45)' }}>
+                    <DesktopMock theme="light" />
+                  </div>
                 </div>
-                <div style={{ position: 'relative', width: 95, marginLeft: -32, zIndex: 2, pointerEvents: 'none' }}>
-                  <PhoneMock />
+                <div style={{ width: 110, height: 222, position: 'relative', marginLeft: -32, zIndex: 2, pointerEvents: 'none', overflow: 'visible' }}>
+                  <div style={{ width: 260, transformOrigin: 'top left', transform: 'scale(0.42)' }}>
+                    <PhoneMock />
+                  </div>
                 </div>
               </div>
               <div className="vs5-anchor-label">

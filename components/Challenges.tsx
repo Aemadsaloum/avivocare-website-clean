@@ -67,6 +67,9 @@ export default function Challenges() {
   const sectionRef = useRef<HTMLElement>(null);
   const [slideIdx, setSlideIdx] = useState(0);
   const [slideVisible, setSlideVisible] = useState(true);
+  // tick is bumped on manual navigation to restart the auto-rotate interval
+  const [tick, setTick] = useState(0);
+  const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const root = sectionRef.current;
@@ -87,21 +90,33 @@ export default function Challenges() {
     return () => io.disconnect();
   }, []);
 
-  // Auto-rotate the headline/intro slide every 5s with a soft fade
+  // Auto-rotate the headline/intro slide every 5s with a soft fade.
+  // Restarts whenever `tick` changes (i.e. after a manual dot click).
   useEffect(() => {
-    let fadeTimeout: ReturnType<typeof setTimeout> | undefined;
     const interval = setInterval(() => {
       setSlideVisible(false);
-      fadeTimeout = setTimeout(() => {
+      fadeTimeoutRef.current = setTimeout(() => {
         setSlideIdx((i) => (i + 1) % slides.length);
         setSlideVisible(true);
       }, 360);
     }, 5000);
     return () => {
       clearInterval(interval);
-      if (fadeTimeout) clearTimeout(fadeTimeout);
+      if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
     };
-  }, []);
+  }, [tick]);
+
+  const goToSlide = (i: number) => {
+    if (i === slideIdx) return;
+    if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
+    setSlideVisible(false);
+    fadeTimeoutRef.current = setTimeout(() => {
+      setSlideIdx(i);
+      setSlideVisible(true);
+    }, 360);
+    // restart the auto-rotate timer so the user gets a full 5s before next auto-advance
+    setTick((t) => t + 1);
+  };
 
   return (
     <section className="section ch-section" id="utmaningar" ref={sectionRef}>
@@ -117,11 +132,16 @@ export default function Challenges() {
             <h2 className="ch-headline">{slides[slideIdx].headline}</h2>
             <p className="ch-lede">{slides[slideIdx].lede}</p>
           </div>
-          <div className="ch-slide-dots" aria-hidden="true">
+          <div className="ch-slide-dots" role="tablist" aria-label="Utmaningen — bildspel">
             {slides.map((_, i) => (
-              <span
+              <button
                 key={i}
+                type="button"
+                role="tab"
+                aria-label={`Visa bild ${i + 1} av ${slides.length}`}
+                aria-selected={i === slideIdx}
                 className={`ch-slide-dot${i === slideIdx ? ' is-active' : ''}`}
+                onClick={() => goToSlide(i)}
               />
             ))}
           </div>
@@ -249,11 +269,32 @@ export default function Challenges() {
           margin-top: 28px;
         }
         .ch-slide-dot {
+          appearance: none;
+          -webkit-appearance: none;
+          border: 0;
+          margin: 0;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
           width: 6px;
           height: 6px;
           border-radius: 50%;
           background: rgba(31,42,68,0.18);
+          position: relative;
           transition: background 360ms ease, transform 360ms ease;
+        }
+        /* invisible expanded hit area so the dot is comfortable to tap */
+        .ch-slide-dot::before {
+          content: '';
+          position: absolute;
+          inset: -10px;
+        }
+        .ch-slide-dot:hover {
+          background: rgba(31,42,68,0.4);
+        }
+        .ch-slide-dot:focus-visible {
+          outline: 2px solid var(--coral);
+          outline-offset: 4px;
         }
         .ch-slide-dot.is-active {
           background: var(--coral);

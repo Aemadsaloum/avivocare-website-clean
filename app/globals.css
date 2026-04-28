@@ -1025,17 +1025,19 @@ img, svg { max-width: 100%; height: auto; }
     max-width: calc(100% - 24px);
     padding: 6px 12px 6px 16px;
   }
-  .nav-logo-slot { width: 120px !important; height: 28px !important; }
-  .nav .nav-logo-slot img { height: 56px !important; }
+  .nav-logo-slot { width: 142px !important; height: 32px !important; }
+  .nav .nav-logo-slot img { height: 66px !important; }
   .nav-demo {
-    padding: 12px 16px;
-    font-size: 13px;
+    padding: 10px 13px;
+    font-size: 12px;
     min-height: 44px;
   }
 
   /* Hero */
   .hero-editorial { padding: 32px 0 56px; }
   .hero-editorial::before { font-size: 140px; right: -10px; top: 20px; opacity: 0.25; }
+  /* Hero top label — subtle on mobile (size −33%, slightly tighter tracking) */
+  .hero-editorial .eyebrow { font-size: 8px; letter-spacing: 0.16em; }
   .he-grid { gap: 28px; padding-top: 24px; }
   .he-lede { font-size: 16px; margin-bottom: 22px; }
   .he-actions { flex-direction: column; gap: 10px; align-items: stretch; }

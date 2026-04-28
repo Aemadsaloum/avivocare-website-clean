@@ -52,7 +52,7 @@ export default function Differentiators() {
 
         /* Header — left-aligned, editorial */
         .df-head {
-          max-width: 760px;
+          max-width: 720px;
           margin: 0 0 64px;
           text-align: left;
         }
@@ -75,11 +75,11 @@ export default function Differentiators() {
           max-width: 56ch;
         }
 
-        /* Grid — invisible structure, whitespace only */
+        /* Tighter editorial grid */
         .df-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          max-width: 1100px;
+          max-width: 980px;
           margin: 0;
           column-gap: 80px;
           row-gap: 56px;
@@ -87,49 +87,77 @@ export default function Differentiators() {
         .df-cell {
           display: flex;
           flex-direction: column;
-          gap: 10px;
           padding: 0;
           background: none;
           border: none;
+          position: relative;
         }
 
-        /* Smaller, faded number */
+        /* Subtle divider — only between row 1 and row 2, partial width */
+        .df-cell:nth-child(-n+2)::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 64%;
+          bottom: -28px;
+          height: 1px;
+          background: rgba(31,42,68,0.08);
+        }
+
+        /* Number — small marker, faded */
         .df-num {
           font-family: var(--font-mono);
-          font-size: 11px;
+          font-size: 10px;
           font-weight: 600;
           letter-spacing: 0.18em;
           color: var(--coral);
-          opacity: 0.6;
-          margin-bottom: 2px;
+          opacity: 0.5;
+          margin: 0 0 8px;
         }
-        /* Stronger title */
+        /* Title baseline (right column reference) */
         .df-title {
           font-family: var(--font-sans);
-          font-weight: 800;
-          font-size: clamp(20px, 2.2vw, 26px);
+          font-weight: 700;
+          font-size: clamp(19px, 2vw, 24px);
           line-height: 1.25;
           letter-spacing: -0.02em;
           color: var(--navy);
-          margin: 0;
+          margin: 0 0 18px;
           text-wrap: balance;
         }
-        /* Slightly smaller body, more line-height */
+        /* Left column dominance — titles ~7-8% larger */
+        .df-cell:nth-child(2n+1) .df-title {
+          font-size: clamp(22px, 2.4vw, 28px);
+        }
+        /* Body — lighter for stronger title↔body contrast */
         .df-body {
           font-size: 15px;
           line-height: 1.7;
           color: var(--muted);
+          opacity: 0.85;
           margin: 0;
-          max-width: 46ch;
+          max-width: 44ch;
         }
 
         @media (max-width: 980px) {
           .df-grid { column-gap: 56px; row-gap: 44px; }
+          .df-cell:nth-child(-n+2)::after { bottom: -22px; }
         }
         @media (max-width: 720px) {
           .df-head { margin-bottom: 44px; }
-          .df-grid { grid-template-columns: 1fr; row-gap: 36px; }
-          .df-cell { gap: 8px; }
+          .df-grid {
+            grid-template-columns: 1fr;
+            row-gap: 36px;
+            max-width: 100%;
+          }
+          /* Drop the desktop divider on single-column mobile */
+          .df-cell:nth-child(-n+2)::after { display: none; }
+          /* Reset left-column dominance on single-column mobile */
+          .df-cell .df-title,
+          .df-cell:nth-child(2n+1) .df-title {
+            font-size: clamp(19px, 5.4vw, 23px);
+          }
+          .df-title { margin-bottom: 14px; }
         }
       `}</style>
     </section>

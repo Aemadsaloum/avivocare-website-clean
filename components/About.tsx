@@ -32,8 +32,8 @@ export default function About() {
               </p>
             </div>
           </div>
-          <div className="ab-photo-wrap">
-            <div className="ab-photo">
+          <div className="ab-photo-wrap" style={{ width: '100%' }}>
+            <div className="ab-photo" style={{ width: '100%', aspectRatio: '4 / 3', minHeight: 360 }}>
               <span>FOTO · personal &amp; brukare i samtal<br />varma toner · naturligt ljus</span>
             </div>
             <div className="ab-photo-tag">

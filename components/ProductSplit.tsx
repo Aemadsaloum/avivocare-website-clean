@@ -64,7 +64,43 @@ export default function ProductSplit() {
         </article>
 
         <div className="ps-divider" aria-hidden="true">
-          <span /><em>+</em><span />
+          <svg
+            width="100%"
+            height="48"
+            viewBox="0 0 1200 48"
+            preserveAspectRatio="none"
+            style={{ display: 'block', overflow: 'visible' }}
+          >
+            <defs>
+              <linearGradient id="ps-divider-grad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="rgba(31,42,74,0)" />
+                <stop offset="50%" stopColor="rgba(31,42,74,0.22)" />
+                <stop offset="100%" stopColor="rgba(31,42,74,0)" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M 0 24 Q 600 40 1200 24"
+              stroke="url(#ps-divider-grad)"
+              strokeWidth="1"
+              fill="none"
+            />
+            <circle
+              cx="600"
+              cy="40"
+              r="5"
+              fill="var(--coral)"
+              style={{
+                filter: 'drop-shadow(0 0 8px rgba(217,109,94,0.55))',
+                transformOrigin: 'center',
+                transformBox: 'fill-box',
+                animation: 'ps-divider-pulse 2.4s ease-in-out infinite',
+              }}
+            />
+          </svg>
+          <style>{`@keyframes ps-divider-pulse {
+            0%, 100% { opacity: 0.85; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.25); }
+          }`}</style>
         </div>
 
         {/* Rutina App */}

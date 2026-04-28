@@ -23,7 +23,6 @@ export default function Nav({ variant = 'editorial' }: NavProps) {
         <a className="nav-link" style={{ color: linkColor }} href="#kontakt">Kontakt</a>
       </div>
       <div className="nav-cta">
-        <a className="nav-login" style={{ color: linkColor }} href="#">Logga in</a>
         <a className="nav-demo" href="mailto:info@avivocare.com?subject=Boka%20demo">Boka demo</a>
       </div>
     </nav>

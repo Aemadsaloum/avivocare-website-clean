@@ -4,7 +4,7 @@ interface LogoProps {
 }
 
 export default function Logo({ size = 'md', color = 'navy' }: LogoProps) {
-  const h = size === 'xl' ? 96 : size === 'lg' ? 52 : 22;
+  const h = size === 'xl' ? 96 : size === 'lg' ? 104 : 22;
   const filter = color === 'white' ? 'brightness(0) invert(1)' : 'none';
   return (
     <img

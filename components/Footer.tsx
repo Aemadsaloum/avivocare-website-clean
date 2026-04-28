@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="foot-bottom">
-          <span>AVIVO AB · Org. 559538-5260</span>
+          <span>© 2026 Avivo AB · Org. 559538-5260 · Stockholm, Sverige</span>
         </div>
       </div>
     </footer>

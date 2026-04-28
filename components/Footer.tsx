@@ -28,8 +28,8 @@ export default function Footer() {
           </div>
           <div className="foot-col">
             <h5>Kontakt</h5>
-            <a href="#">hello@avivocare.com</a>
-            <a href="#">Boka demo</a>
+            <a href="mailto:info@avivocare.com">info@avivocare.com</a>
+            <a href="mailto:info@avivocare.com?subject=Boka%20demo">Boka demo</a>
             <a href="#">LinkedIn</a>
           </div>
         </div>

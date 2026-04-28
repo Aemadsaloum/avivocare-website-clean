@@ -1,7 +1,7 @@
 const pillars: [string, string, string][] = [
-  ['01', 'Var lagras data fysiskt?', 'Inom EU, hos europeiska leverantörer.'],
-  ['02', 'Vem har juridisk åtkomst?', 'Inga amerikanska bolag. CLOUD Act gäller även servrar i Europa.'],
-  ['03', 'Vad händer om vi försvinner?', 'Data tillhör kommunen och kan lämnas ut i öppna format.'],
+  ['01', 'Var lagras informationen?', 'Data ska hanteras inom EU och hos svenska leverantörer som kan redovisa tydliga rutiner för säkerhet, åtkomst och efterlevnad.'],
+  ['02', 'Vem kan komma åt den?', 'Åtkomst ska vara begränsad, spårbar och styrd av behörighet. Det ska vara tydligt vem som ser vad, när och varför.'],
+  ['03', 'Vad händer över tid?', 'Kommunen ska kunna behålla kontroll över sin information, även vid byte av leverantör, avslutat avtal eller förändrade behov.'],
 ];
 
 export default function Manifest() {
@@ -17,8 +17,7 @@ export default function Manifest() {
               Det är ett <span className="accent-italic">etiskt val.</span>
             </h2>
             <p className="lede" style={{ color: 'rgba(255,255,255,0.78)' }}>
-              I LSS är data aldrig bara data. Det handlar om personer i sårbar situation,
-              sekretess enligt OSL, och kommunens ansvar, inte leverantörens.
+              I LSS handlar data inte bara om drift och teknik. Det handlar om personer i en utsatt situation, sekretess och kommunens ansvar att välja lösningar som är trygga, begripliga och långsiktigt hållbara.
             </p>
           </div>
           <div className="mf-pillars">

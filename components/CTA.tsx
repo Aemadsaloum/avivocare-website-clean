@@ -18,8 +18,8 @@ export default function CTA() {
             </p>
           </div>
           <div className="cta-actions">
-            <a className="btn btn-primary" href="#">Boka samtal</a>
-            <a className="btn btn-ghost" href="#">Skicka ett mail</a>
+            <a className="btn btn-primary" href="mailto:info@avivocare.com?subject=Boka%20samtal">Boka samtal</a>
+            <a className="btn btn-ghost" href="mailto:info@avivocare.com">Skicka ett mail</a>
           </div>
         </div>
       </div>

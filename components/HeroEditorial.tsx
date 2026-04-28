@@ -18,7 +18,7 @@ export default function HeroEditorial() {
               med pilotkommuner som vill forma framtidens omsorg.
             </p>
             <div className="he-actions">
-              <a className="btn btn-primary" href="#demo">
+              <a className="btn btn-primary" href="mailto:info@avivocare.com?subject=Boka%20demo">
                 Boka demo
                 <svg className="btn-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="1" y1="7" x2="12" y2="7" /><polyline points="8 3 13 7 8 11" fill="none" />

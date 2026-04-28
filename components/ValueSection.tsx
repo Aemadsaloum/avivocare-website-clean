@@ -2,6 +2,8 @@
 
 import { useRef, useState, useEffect } from 'react';
 import React from 'react';
+import DesktopMock from './DesktopMock';
+import PhoneMock from './PhoneMock';
 
 const cols = [
   {
@@ -153,15 +155,11 @@ export default function ValueSection() {
 
           <div className="vs5-anchor-wrap">
             <div className="vs5-anchor" data-vs5-reveal style={{ '--d': '320ms' } as React.CSSProperties}>
-              <div className="vs5-clock-aura" aria-hidden="true" />
-              <div className="vs5-clock" aria-hidden="true">
-                <div className="vs5-tick vs5-tick-12" />
-                <div className="vs5-tick vs5-tick-3" />
-                <div className="vs5-tick vs5-tick-6" />
-                <div className="vs5-tick vs5-tick-9" />
-                <div className="vs5-hand vs5-hand-hour" />
-                <div className="vs5-hand vs5-hand-min" />
-                <div className="vs5-pivot" />
+              <div style={{ position: 'relative', width: '100%' }}>
+                <DesktopMock theme="light" />
+                <div style={{ position: 'absolute', top: -28, right: -18, width: 78, pointerEvents: 'none' }}>
+                  <PhoneMock />
+                </div>
               </div>
               <div className="vs5-anchor-label">
                 <span className="vs5-anchor-eyebrow">SAMMA SANNING</span>

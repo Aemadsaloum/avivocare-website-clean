@@ -2,6 +2,7 @@ import Nav from '@/components/Nav';
 import HeroEditorial from '@/components/HeroEditorial';
 import Challenges from '@/components/Challenges';
 import ProductSplit from '@/components/ProductSplit';
+import Differentiators from '@/components/Differentiators';
 import ValueSection from '@/components/ValueSection';
 import Manifest from '@/components/Manifest';
 import About from '@/components/About';
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroEditorial />
       <Challenges />
       <ProductSplit />
+      <Differentiators />
       <ValueSection />
       <Manifest />
       <About />

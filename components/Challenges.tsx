@@ -19,11 +19,19 @@ const slides: { headline: React.ReactNode; lede: React.ReactNode }[] = [
     ),
   },
   {
-    headline: <>Brukarens röst kan inte vara något som &ldquo;läggs till&rdquo;.</>,
+    headline: (
+      <>
+        Brukarens <span className="accent-italic">röst</span> kan inte vara något som &ldquo;läggs till&rdquo;.
+      </>
+    ),
     lede: <>Den måste finnas i systemet — annars försvinner den i vardagen.</>,
   },
   {
-    headline: <>Arbetsmiljö avgörs inte i policys.</>,
+    headline: (
+      <>
+        Arbetsmiljö avgörs inte i <span className="accent-italic">policys</span>.
+      </>
+    ),
     lede: <>Den avgörs i mötet mellan behov och bemanning — varje dag.</>,
   },
 ];

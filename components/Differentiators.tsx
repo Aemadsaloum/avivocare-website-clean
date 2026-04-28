@@ -60,7 +60,7 @@ export default function Differentiators() {
         .df-headline {
           font-family: var(--font-sans);
           font-weight: 800;
-          font-size: clamp(34px, 4.6vw, 60px);
+          font-size: clamp(40px, 5vw, 68px);
           line-height: 1.05;
           letter-spacing: -0.03em;
           color: var(--navy);

@@ -15,7 +15,7 @@ export default function Nav({ variant = 'editorial' }: NavProps) {
 
   return (
     <nav className="nav" style={navStyle}>
-      <div className="nav-logo-slot" style={{ position: 'relative', width: 280, height: 30, flexShrink: 0 }}>
+      <div className="nav-logo-slot" style={{ position: 'relative', width: 140, height: 15, flexShrink: 0 }}>
         <div style={{ position: 'absolute', top: '50%', left: 0, transform: 'translateY(-50%)' }}>
           <Logo size="lg" color={onDark ? 'white' : 'navy'} />
         </div>

@@ -61,7 +61,7 @@ export default function About() {
                 }}
               />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <Logo size="xl" />
+                <Logo height={19} />
               </div>
             </div>
           </div>

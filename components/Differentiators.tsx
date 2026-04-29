@@ -25,30 +25,45 @@ export default function Differentiators() {
   return (
     <section className="section df-section" id="annorlunda">
       <div className="container">
-        <header className="df-head">
-          <span className="eyebrow">RUTINA</span>
-          <h2 className="df-headline">
-            Vad gör Rutina <span className="accent-italic">annorlunda</span>?
-          </h2>
-          <p className="df-lede">
-            Rutina är inte byggt för att ersätta verksamhetens system. Det är byggt för att göra
-            vardagens förändringar synliga, begripliga och hanterbara — i samma stund som de sker.
-          </p>
-        </header>
+        <div className="df-inner">
+          <header className="df-head">
+            <span className="eyebrow">RUTINA</span>
+            <h2 className="df-headline">
+              Vad gör Rutina <span className="accent-italic">annorlunda</span>?
+            </h2>
+            <p className="df-lede">
+              Rutina är inte byggt för att ersätta verksamhetens system. Det är byggt för att göra
+              vardagens förändringar synliga, begripliga och hanterbara — i samma stund som de sker.
+            </p>
+          </header>
 
-        <div className="df-grid">
-          {items.map((it, i) => (
-            <article key={i} className="df-cell">
-              <span className="df-num">{it.n}</span>
-              <h3 className="df-title">{it.title}</h3>
-              <p className="df-body">{it.body}</p>
-            </article>
-          ))}
+          <div className="df-grid">
+            {items.map((it, i) => (
+              <article key={i} className="df-cell">
+                <span className="df-num">{it.n}</span>
+                <h3 className="df-title">{it.title}</h3>
+                <p className="df-body">{it.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
 
       <style>{`
         .df-section { background: white; }
+
+        /* Subtle editorial anchor — single continuous vertical rule
+           along the left of the section's content. */
+        .df-inner {
+          padding-left: 32px;
+          border-left: 1px solid rgba(31,42,68,0.1);
+        }
+        @media (max-width: 720px) {
+          .df-inner { padding-left: 18px; border-left-color: rgba(31,42,68,0.08); }
+        }
+        @media (max-width: 480px) {
+          .df-inner { padding-left: 14px; }
+        }
 
         /* Header — left-aligned, editorial */
         .df-head {

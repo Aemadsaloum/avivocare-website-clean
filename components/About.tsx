@@ -43,8 +43,8 @@ export default function About() {
                 overflow: 'hidden',
                 background: 'transparent',
                 border: 'none',
-                alignItems: 'flex-start',
-                paddingTop: 32,
+                alignItems: 'flex-end',
+                paddingBottom: 32,
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

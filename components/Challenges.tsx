@@ -65,8 +65,10 @@ const items = [
 
 export default function Challenges() {
   const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const [slideIdx, setSlideIdx] = useState(0);
   const [slideVisible, setSlideVisible] = useState(true);
+  const [carouselInView, setCarouselInView] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -89,9 +91,26 @@ export default function Challenges() {
     return () => io.disconnect();
   }, []);
 
+  // Track whether the carousel header is in the viewport so we only
+  // auto-rotate while the user can actually see it.
+  useEffect(() => {
+    const target = headerRef.current;
+    if (!target) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => setCarouselInView(e.isIntersecting));
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(target);
+    return () => io.disconnect();
+  }, []);
+
   // (Re)start the auto-rotate interval. Safe to call repeatedly — clears any prior interval first.
+  // Only schedules a new interval if the carousel is actually visible.
   const startAutoRotate = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
+    if (!carouselInView) return;
     intervalRef.current = setInterval(() => {
       if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
       setSlideVisible(false);
@@ -100,9 +119,10 @@ export default function Challenges() {
         setSlideVisible(true);
       }, 360);
     }, 5000);
-  }, []);
+  }, [carouselInView]);
 
-  // Mount: start auto-rotate. Unmount: clear both interval and pending fade.
+  // Start/stop the auto-rotate interval as carousel enters / leaves view.
+  // Unmount cleanup also clears any pending fade timeout.
   useEffect(() => {
     startAutoRotate();
     return () => {
@@ -135,7 +155,7 @@ export default function Challenges() {
       <div className="ch-bg-num" aria-hidden="true">01</div>
 
       <div className="container">
-        <header className="ch-head">
+        <header className="ch-head" ref={headerRef}>
           <div className="ch-eyebrow">
             <span className="ch-eyebrow-line" />
             <span>UTMANINGEN</span>

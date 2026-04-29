@@ -21,7 +21,7 @@ const slides: { headline: React.ReactNode; lede: React.ReactNode }[] = [
   {
     headline: (
       <>
-        Brukarens <span className="accent-italic">röst</span> kan inte vara något som &ldquo;läggs till&rdquo;.
+        Brukarens <span className="accent-italic">röst</span>{' '}kan inte vara något som &ldquo;läggs till&rdquo;.
       </>
     ),
     lede: <>Den måste finnas i systemet — annars försvinner den i vardagen.</>,

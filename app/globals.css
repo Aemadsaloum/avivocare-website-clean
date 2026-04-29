@@ -1118,6 +1118,53 @@ img, svg { max-width: 100%; height: auto; }
   .foot { padding: 48px 0 24px; }
   .foot-grid { grid-template-columns: 1fr; gap: 24px; padding-bottom: 32px; }
   .foot-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+
+  /* ── Mobile typography hierarchy ──
+     Restores a clear scale on mobile where rubriker, ledes och body
+     otherwise collapse into the 15–40 px band and read as one wall. */
+
+  /* Tier 1 — Hero display, the visual peak */
+  .he-headline {
+    font-size: clamp(36px, 10vw, 44px);
+    margin: 14px 0 20px;
+  }
+
+  /* Tier 2 — Section headings (Manifest, About, ProductSplit, Differentiators).
+     Drops from the stuck-at-clamp-min 40 px down to ~30 px so they sit
+     clearly below the hero and clearly above the lede. */
+  .h-1 {
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.1;
+  }
+  .ps-h {
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.1;
+  }
+  .df-section .df-headline {
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.1;
+  }
+
+  /* Tier 3 — Lede / intro paragraph.
+     Was hard-stuck at 19 px on mobile (no override). Now ~17 px so the gap
+     to the new 28–34 px section heading is clear, and the gap to the
+     15 px body is still readable. */
+  .lede { font-size: 17px; line-height: 1.55; }
+  .ps-lede { font-size: 17px; line-height: 1.55; }
+  .df-section .df-lede { font-size: 17px; line-height: 1.55; }
+
+  /* About — first paragraph reads as a lede, the rest as body.
+     Breaks up the four-paragraph wall with a clear opening voice. */
+  .ab-body p:first-of-type {
+    font-size: 16.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* Manifest — wider gap between pillar title and pillar body so they
+     stop reading as the same tier on a dark background. */
+  .mf-pillar-title { font-size: 19px; }
+  .mf-pillar-body { font-size: 13.5px; opacity: 0.88; }
 }
 
 /* ─── Very narrow (≤ 360px) ─── */
